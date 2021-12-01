@@ -1,4 +1,4 @@
-<h2 align="center">Advent of Code 2021</h2>
+<h1 align="center">Advent of Code 2021</h1>
 <p align="center">
  <img src="https://media.giphy.com/media/Rcmyx7NfyNhSM/giphy.gif" width="300px">
 </p>
