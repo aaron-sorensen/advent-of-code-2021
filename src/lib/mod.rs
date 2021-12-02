@@ -17,5 +17,6 @@ pub fn day_one() {
 
 pub fn day_two() {
     let input = navigation::get_input("day-2");
-    println!("2-1: {:?}", navigation::get_bearings(input));
+    println!("2-1: {:?}", navigation::get_bearings_old(&input));
+    println!("2-2: {:?}", navigation::get_bearings(&input));
 }

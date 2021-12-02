@@ -30,7 +30,8 @@ pub fn get_input(file: &str) -> Vec<NavDirection> {
     nav_instructions
 }
 
-pub fn get_bearings(directions: Vec<NavDirection>) -> u32 {
+// Bearings from the first question on day 2
+pub fn get_bearings_old(directions: &Vec<NavDirection>) -> u32 {
     let mut depth: u32 = 0;
     let mut horizontal: u32 = 0;
 
@@ -39,6 +40,25 @@ pub fn get_bearings(directions: Vec<NavDirection>) -> u32 {
             NavDirection::Forward(value) => horizontal += value,
             NavDirection::Down(value) => depth += value,
             NavDirection::Up(value) => depth -= value,
+        }
+    }
+
+    depth * horizontal
+}
+
+pub fn get_bearings(directions: &Vec<NavDirection>) -> u32 {
+    let mut depth: u32 = 0;
+    let mut horizontal: u32 = 0;
+    let mut aim: u32 = 0;
+
+    for direction in directions.iter() {
+        match direction {
+            NavDirection::Forward(value) => {
+                horizontal += value;
+                depth += aim * value
+            }
+            NavDirection::Down(value) => aim += value,
+            NavDirection::Up(value) => aim -= value,
         }
     }
 
@@ -54,7 +74,7 @@ mod tests {
     #[test]
     fn it_maintains_correct_answers() {
         let input = get_input(DAY);
-        let bearings = get_bearings(input);
-        assert_eq!(2102357, bearings);
+        assert_eq!(2102357, get_bearings_old(&input));
+        assert_eq!(2101031224, get_bearings(&input));
     }
 }
