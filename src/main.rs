@@ -1,5 +1,5 @@
 use structopt::StructOpt;
-mod lib;
+pub mod lib;
 
 #[derive(StructOpt, Debug)]
 enum Cli {
@@ -14,20 +14,11 @@ enum Cli {
 
 fn main() {
     match Cli::from_args() {
-        Cli::All {} => all(),
+        Cli::All {} => lib::all(),
         Cli::Day { day } => match day {
-            1 => day_one(),
+            1 => lib::day_one(),
+            2 => lib::day_two(),
             _ => println!("Day {} not found", day),
         },
     }
-}
-
-fn all() {
-    day_one()
-}
-
-fn day_one() {
-    let input = lib::get_input("day-1");
-    println!("1-1: {}", lib::get_increment_count(&input.real));
-    println!("1-2: {}", lib::get_increment_window_count(&input.real, 3));
 }
