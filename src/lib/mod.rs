@@ -1,9 +1,11 @@
-pub mod navigation;
-pub mod scanner;
+mod diagnostic;
+mod navigation;
+mod scanner;
 
 pub fn all() {
     day_one();
     day_two();
+    day_three();
 }
 
 pub fn day_one() {
@@ -19,4 +21,10 @@ pub fn day_two() {
     let input = navigation::get_input("day-2");
     println!("2-1: {:?}", navigation::get_bearings_old(&input));
     println!("2-2: {:?}", navigation::get_bearings(&input));
+}
+
+pub fn day_three() {
+    let input = diagnostic::get_input("day-3");
+    println!("3-1: {}", diagnostic::get_power_consumption(&input));
+    println!("3-2: {}", diagnostic::get_life_support_rating(&input));
 }

@@ -18,6 +18,7 @@ fn main() {
         Cli::Day { day } => match day {
             1 => lib::day_one(),
             2 => lib::day_two(),
+            3 => lib::day_three(),
             _ => println!("Day {} not found", day),
         },
     }
