@@ -1,3 +1,4 @@
+mod bingo;
 mod diagnostic;
 mod navigation;
 mod scanner;
@@ -6,6 +7,7 @@ pub fn all() {
     day_one();
     day_two();
     day_three();
+    day_four();
 }
 
 pub fn day_one() {
@@ -27,4 +29,11 @@ pub fn day_three() {
     let input = diagnostic::get_input("day-3");
     println!("3-1: {}", diagnostic::get_power_consumption(&input));
     println!("3-2: {}", diagnostic::get_life_support_rating(&input));
+}
+
+pub fn day_four() {
+    let numbers = bingo::get_numbers("day-4");
+    let cards = bingo::get_cards("day-4");
+    println!("4-1: {}", bingo::find_winner(&cards, &numbers));
+    println!("4-2: {}", bingo::find_last_winner(&cards, &numbers));
 }
