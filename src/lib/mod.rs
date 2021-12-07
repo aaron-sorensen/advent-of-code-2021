@@ -1,5 +1,6 @@
 mod bingo;
 mod diagnostic;
+mod lanternfish;
 mod navigation;
 mod scanner;
 mod vents;
@@ -14,6 +15,8 @@ pub fn all() {
     day_four();
     println!("-");
     day_five();
+    println!("-");
+    day_six();
 }
 
 pub fn day_one() {
@@ -50,4 +53,10 @@ pub fn day_five() {
     let map_2 = vents::generate_map(&input, true);
     println!("5-1: {}", vents::elevation_count(&map_1, 2));
     println!("5-2: {}", vents::elevation_count(&map_2, 2));
+}
+
+pub fn day_six() {
+    let numbers = lanternfish::get_numbers("day-6");
+    println!("6-1: {}", lanternfish::calculate_growth(&numbers, 80));
+    println!("6-2: {}", lanternfish::calculate_growth(&numbers, 256));
 }

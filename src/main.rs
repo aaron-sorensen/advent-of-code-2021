@@ -21,6 +21,7 @@ fn main() {
             3 => lib::day_three(),
             4 => lib::day_four(),
             5 => lib::day_five(),
+            6 => lib::day_six(),
             _ => println!("Day {} not found", day),
         },
     }
