@@ -1,4 +1,5 @@
 mod bingo;
+mod crabs;
 mod diagnostic;
 mod lanternfish;
 mod navigation;
@@ -17,6 +18,8 @@ pub fn all() {
     day_five();
     println!("-");
     day_six();
+    println!("-");
+    day_seven();
 }
 
 pub fn day_one() {
@@ -59,4 +62,10 @@ pub fn day_six() {
     let numbers = lanternfish::get_numbers("day-6");
     println!("6-1: {}", lanternfish::calculate_growth(&numbers, 80));
     println!("6-2: {}", lanternfish::calculate_growth(&numbers, 256));
+}
+
+pub fn day_seven() {
+    let positions = crabs::get_numbers("day-7");
+    println!("7-1: {}", crabs::get_position(&positions, true));
+    println!("7-2: {}", crabs::get_position(&positions, false));
 }
