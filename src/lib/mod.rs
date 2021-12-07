@@ -2,12 +2,18 @@ mod bingo;
 mod diagnostic;
 mod navigation;
 mod scanner;
+mod vents;
 
 pub fn all() {
     day_one();
+    println!("-");
     day_two();
+    println!("-");
     day_three();
+    println!("-");
     day_four();
+    println!("-");
+    day_five();
 }
 
 pub fn day_one() {
@@ -36,4 +42,12 @@ pub fn day_four() {
     let cards = bingo::get_cards("day-4");
     println!("4-1: {}", bingo::find_winner(&cards, &numbers));
     println!("4-2: {}", bingo::find_last_winner(&cards, &numbers));
+}
+
+pub fn day_five() {
+    let input = vents::get_input("day-5");
+    let map_1 = vents::generate_map(&input, false);
+    let map_2 = vents::generate_map(&input, true);
+    println!("5-1: {}", vents::elevation_count(&map_1, 2));
+    println!("5-2: {}", vents::elevation_count(&map_2, 2));
 }
