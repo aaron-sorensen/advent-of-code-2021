@@ -1,6 +1,3 @@
-use std::fs;
-use std::io::{BufRead, BufReader};
-
 #[derive(Debug)]
 pub enum NavDirection {
     Forward(u32),
@@ -8,15 +5,10 @@ pub enum NavDirection {
     Up(u32),
 }
 
-pub fn get_input(file: &str) -> Vec<NavDirection> {
+pub fn get_input() -> Vec<NavDirection> {
     let mut nav_instructions: Vec<NavDirection> = Vec::new();
-    let path = format!("./input/{}.txt", file);
 
-    let f = fs::File::open(path).expect("Unable to open file");
-    let f = BufReader::new(f);
-
-    for line in f.lines() {
-        let line = line.expect("Unable to read line");
+    for line in include_str!("input/day-2.txt").lines() {
         let mut iter = line.split_whitespace();
         let instruction = iter.next().unwrap();
         let value: u32 = iter.next().unwrap().parse::<u32>().unwrap();
@@ -69,11 +61,9 @@ pub fn get_bearings(directions: &Vec<NavDirection>) -> u32 {
 mod tests {
     use super::*;
 
-    const DAY: &str = "day-2";
-
     #[test]
     fn it_maintains_correct_answers() {
-        let input = get_input(DAY);
+        let input = get_input();
         assert_eq!(2102357, get_bearings_old(&input));
         assert_eq!(2101031224, get_bearings(&input));
     }

@@ -1,20 +1,12 @@
-use std::fs;
-use std::io::{BufRead, BufReader};
-
-pub fn get_input(file: &str) -> (Vec<u16>, usize) {
-    let path = format!("./input/{}.txt", file);
-
-    let f = fs::File::open(path).expect("Unable to open file");
-    let f = BufReader::new(f);
-
-    f.lines()
-        .enumerate()
-        .fold((Vec::new(), 0), |mut acc, (_i, line)| {
-            let line = line.expect("Unable to read line");
+pub fn get_input() -> (Vec<u16>, usize) {
+    include_str!("input/day-3.txt").lines().enumerate().fold(
+        (Vec::new(), 0),
+        |mut acc, (_i, line)| {
             acc.1 = line.len();
             acc.0.push(u16::from_str_radix(&line, 2).unwrap());
             acc
-        })
+        },
+    )
 }
 
 pub fn get_power_consumption(input: &(Vec<u16>, usize)) -> usize {
@@ -136,11 +128,9 @@ pub fn inverse_bits(input: &u16, length: usize) -> u16 {
 mod tests {
     use super::*;
 
-    const DAY: &str = "day-3";
-
     #[test]
     fn it_maintains_correct_answers() {
-        let input = get_input(DAY);
+        let input = get_input();
         assert_eq!(2954600, get_power_consumption(&input));
         assert_eq!(1662846, get_life_support_rating(&input));
     }

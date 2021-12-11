@@ -1,12 +1,8 @@
-use std::fs::read_to_string;
-
-pub fn get_numbers(file: &str) -> Vec<i32> {
-    let path = format!("./input/{}.txt", file);
-    read_to_string(path)
-        .unwrap()
+pub fn get_numbers() -> Vec<i32> {
+    include_str!("input/day-7.txt")
         .split(",")
         .map(|s| s.trim().parse::<i32>().unwrap())
-        .collect::<Vec<_>>()
+        .collect()
 }
 
 fn get_fuel_cost(crab: i32, position: i32, first_question: bool) -> i32 {
@@ -38,11 +34,9 @@ pub fn get_position(crab_positions: &Vec<i32>, first_question: bool) -> i32 {
 mod tests {
     use super::*;
 
-    const DAY: &str = "day-7";
-
     #[test]
     fn it_maintains_correct_answers() {
-        let positions = get_numbers(DAY);
+        let positions = get_numbers();
         assert_eq!(337488, get_position(&positions, true));
         assert_eq!(89647695, get_position(&positions, false));
     }

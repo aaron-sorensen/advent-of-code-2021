@@ -1,21 +1,13 @@
-use std::fs;
-use std::io::{BufRead, BufReader};
-
 #[derive(Debug, Clone)]
 pub struct VentLine {
     pub start: (usize, usize),
     pub end: (usize, usize),
 }
 
-pub fn get_input(file: &str) -> Vec<VentLine> {
+pub fn get_input() -> Vec<VentLine> {
     let mut lines: Vec<VentLine> = Vec::new();
-    let path = format!("./input/{}.txt", file);
 
-    let f = fs::File::open(path).expect("Unable to open file");
-    let f = BufReader::new(f);
-
-    for line in f.lines() {
-        let line = line.expect("Unable to read line");
+    for line in include_str!("input/day-5.txt").lines() {
         let split = line.split_whitespace().collect::<Vec<_>>();
 
         let start = split[0]
@@ -101,11 +93,9 @@ pub fn elevation_count(map: &Vec<Vec<usize>>, elevation: usize) -> usize {
 mod tests {
     use super::*;
 
-    const DAY: &str = "day-5";
-
     #[test]
     fn it_maintains_correct_answers() {
-        let input = get_input(DAY);
+        let input = get_input();
         let map_1 = generate_map(&input, false);
         let map_2 = generate_map(&input, true);
         assert_eq!(6283, elevation_count(&map_1, 2));
