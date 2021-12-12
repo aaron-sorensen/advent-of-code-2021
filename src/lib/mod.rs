@@ -49,7 +49,7 @@ static DAYS: [fn(); 8] = [
     || {
         let input = segment::get_input();
         println!("8-1: {}", segment::count_unique_digits(&input));
-        //println!("8-2: {}", crabs::get_position(&positions, false));
+        println!("8-2: {}", segment::decode_all(&input));
     },
 ];
 

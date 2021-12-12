@@ -6,7 +6,7 @@ pub fn get_numbers() -> Vec<u64> {
 }
 
 pub fn calculate_growth(starting_fish: &Vec<u64>, days: usize) -> u64 {
-    let mut buckets: Vec<u64> = vec![0, 0, 0, 0, 0, 0, 0, 0, 0];
+    let mut buckets: Vec<u64> = vec![0; 9];
     let mut day = 1;
 
     for fish in starting_fish {
