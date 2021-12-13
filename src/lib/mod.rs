@@ -1,5 +1,6 @@
 mod bingo;
 mod crabs;
+mod day_9;
 mod diagnostic;
 mod lanternfish;
 mod navigation;
@@ -7,7 +8,7 @@ mod scanner;
 mod segment;
 mod vents;
 
-static DAYS: [fn(); 8] = [
+static DAYS: [fn(); 9] = [
     || {
         let input = scanner::get_input();
         println!("1-1: {}", scanner::get_increment_count(&input));
@@ -50,6 +51,10 @@ static DAYS: [fn(); 8] = [
         let input = segment::get_input();
         println!("8-1: {}", segment::count_unique_digits(&input));
         println!("8-2: {}", segment::decode_all(&input));
+    },
+    || {
+        println!("9-1: {}", day_9::part_1());
+        println!("9-2: {}", day_9::part_2());
     },
 ];
 
