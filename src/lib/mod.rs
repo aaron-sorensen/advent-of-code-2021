@@ -1,56 +1,45 @@
-mod bingo;
-mod crabs;
+mod day_1;
+mod day_2;
+mod day_3;
+mod day_4;
+mod day_5;
+mod day_6;
+mod day_7;
+mod day_8;
 mod day_9;
-mod diagnostic;
-mod lanternfish;
-mod navigation;
-mod scanner;
-mod segment;
-mod vents;
 
 static DAYS: [fn(); 9] = [
     || {
-        let input = scanner::get_input();
-        println!("1-1: {}", scanner::get_increment_count(&input));
-        println!("1-2: {}", scanner::get_increment_window_count(&input, 3));
+        println!("1-1: {}", day_1::part_1());
+        println!("1-2: {}", day_1::part_2());
     },
     || {
-        let input = navigation::get_input();
-        println!("2-1: {:?}", navigation::get_bearings_old(&input));
-        println!("2-2: {:?}", navigation::get_bearings(&input));
+        println!("2-1: {:?}", day_2::part_1());
+        println!("2-2: {:?}", day_2::part_2());
     },
     || {
-        let input = diagnostic::get_input();
-        println!("3-1: {}", diagnostic::get_power_consumption(&input));
-        println!("3-2: {}", diagnostic::get_life_support_rating(&input));
+        println!("3-1: {}", day_3::part_1());
+        println!("3-2: {}", day_3::part_2());
     },
     || {
-        let numbers = bingo::get_numbers();
-        let cards = bingo::get_cards();
-        println!("4-1: {}", bingo::find_winner(&cards, &numbers));
-        println!("4-2: {}", bingo::find_last_winner(&cards, &numbers));
+        println!("4-1: {}", day_4::part_1());
+        println!("4-2: {}", day_4::part_2());
     },
     || {
-        let input = vents::get_input();
-        let map_1 = vents::generate_map(&input, false);
-        let map_2 = vents::generate_map(&input, true);
-        println!("5-1: {}", vents::elevation_count(&map_1, 2));
-        println!("5-2: {}", vents::elevation_count(&map_2, 2));
+        println!("5-1: {}", day_5::part_1());
+        println!("5-2: {}", day_5::part_2());
     },
     || {
-        let numbers = lanternfish::get_numbers();
-        println!("6-1: {}", lanternfish::calculate_growth(&numbers, 80));
-        println!("6-2: {}", lanternfish::calculate_growth(&numbers, 256));
+        println!("6-1: {}", day_6::part_1());
+        println!("6-2: {}", day_6::part_2());
     },
     || {
-        let positions = crabs::get_numbers();
-        println!("7-1: {}", crabs::get_position(&positions, true));
-        println!("7-2: {}", crabs::get_position(&positions, false));
+        println!("7-1: {}", day_7::part_1());
+        println!("7-2: {}", day_7::part_2());
     },
     || {
-        let input = segment::get_input();
-        println!("8-1: {}", segment::count_unique_digits(&input));
-        println!("8-2: {}", segment::decode_all(&input));
+        println!("8-1: {}", day_8::part_1());
+        println!("8-2: {}", day_8::part_2());
     },
     || {
         println!("9-1: {}", day_9::part_1());

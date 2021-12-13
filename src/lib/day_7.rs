@@ -1,4 +1,12 @@
-pub fn get_numbers() -> Vec<i32> {
+pub fn part_1() -> i32 {
+    get_position(&get_numbers(), true)
+}
+
+pub fn part_2() -> i32 {
+    get_position(&get_numbers(), false)
+}
+
+fn get_numbers() -> Vec<i32> {
     include_str!("input/day-7.txt")
         .split(",")
         .map(|s| s.trim().parse::<i32>().unwrap())
@@ -13,7 +21,7 @@ fn get_fuel_cost(crab: i32, position: i32, first_question: bool) -> i32 {
     distance * (distance + 1) / 2
 }
 
-pub fn get_position(crab_positions: &Vec<i32>, first_question: bool) -> i32 {
+fn get_position(crab_positions: &Vec<i32>, first_question: bool) -> i32 {
     let max_pos: &i32 = crab_positions.iter().max().unwrap();
     let mut min_cost = i32::MAX;
 
@@ -35,9 +43,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn it_maintains_correct_answers() {
-        let positions = get_numbers();
-        assert_eq!(337488, get_position(&positions, true));
-        assert_eq!(89647695, get_position(&positions, false));
+    fn check() {
+        assert_eq!(337488, part_1());
+        assert_eq!(89647695, part_2());
     }
 }

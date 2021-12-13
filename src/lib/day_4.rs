@@ -1,10 +1,18 @@
+pub fn part_1() -> usize {
+    find_winner(&get_cards(), &get_numbers())
+}
+
+pub fn part_2() -> usize {
+    find_last_winner(&get_cards(), &get_numbers())
+}
+
 #[derive(Debug, Clone)]
-pub struct BingoCard {
+struct BingoCard {
     pub board: Vec<Vec<usize>>,
     pub called: Vec<(usize, usize)>,
 }
 
-pub trait Mark {
+trait Mark {
     fn mark(&mut self, number: usize) -> usize;
 }
 
@@ -22,7 +30,7 @@ impl Mark for BingoCard {
     }
 }
 
-pub trait CheckWinner {
+trait CheckWinner {
     fn check_winner(&self) -> bool;
 }
 
@@ -55,7 +63,7 @@ impl CheckWinner for BingoCard {
     }
 }
 
-pub trait GetScore {
+trait GetScore {
     fn get_score(&self, last_called: usize) -> usize;
 }
 
@@ -81,7 +89,7 @@ impl GetScore for BingoCard {
     }
 }
 
-pub fn get_numbers() -> Vec<usize> {
+fn get_numbers() -> Vec<usize> {
     include_str!("input/day-4.txt")
         .lines()
         .next()
@@ -91,7 +99,7 @@ pub fn get_numbers() -> Vec<usize> {
         .collect::<Vec<_>>()
 }
 
-pub fn get_cards() -> Vec<BingoCard> {
+fn get_cards() -> Vec<BingoCard> {
     let mut result = Vec::<BingoCard>::new();
 
     for line in include_str!("input/day-4.txt").lines().skip(1) {
@@ -113,7 +121,7 @@ pub fn get_cards() -> Vec<BingoCard> {
     result
 }
 
-pub fn find_winner(cards: &Vec<BingoCard>, numbers: &Vec<usize>) -> usize {
+fn find_winner(cards: &Vec<BingoCard>, numbers: &Vec<usize>) -> usize {
     let mut bingo_cards = cards.clone();
 
     for number in numbers {
@@ -129,7 +137,7 @@ pub fn find_winner(cards: &Vec<BingoCard>, numbers: &Vec<usize>) -> usize {
     0
 }
 
-pub fn find_last_winner(cards: &Vec<BingoCard>, numbers: &Vec<usize>) -> usize {
+fn find_last_winner(cards: &Vec<BingoCard>, numbers: &Vec<usize>) -> usize {
     let mut bingo_cards = cards.clone();
     let mut win_count: usize = 0;
 
@@ -156,10 +164,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn it_maintains_correct_answers() {
-        let numbers = get_numbers();
-        let cards = get_cards();
-        assert_eq!(38594, find_winner(&cards, &numbers));
-        assert_eq!(21184, find_last_winner(&cards, &numbers));
+    fn check() {
+        assert_eq!(38594, part_1());
+        assert_eq!(21184, part_2());
     }
 }

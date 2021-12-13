@@ -5,6 +5,14 @@ pub enum NavDirection {
     Up(u32),
 }
 
+pub fn part_1() -> u32 {
+    get_bearings_old(&get_input())
+}
+
+pub fn part_2() -> u32 {
+    get_bearings(&get_input())
+}
+
 pub fn get_input() -> Vec<NavDirection> {
     let mut nav_instructions: Vec<NavDirection> = Vec::new();
 
@@ -62,9 +70,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn it_maintains_correct_answers() {
-        let input = get_input();
-        assert_eq!(2102357, get_bearings_old(&input));
-        assert_eq!(2101031224, get_bearings(&input));
+    fn check() {
+        assert_eq!(2102357, part_1());
+        assert_eq!(2101031224, part_2());
     }
 }

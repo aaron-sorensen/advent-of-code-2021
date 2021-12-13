@@ -1,6 +1,14 @@
 type Sweeps = Vec<usize>;
 
-pub fn get_increment_window_count(sweeps: &Sweeps, window: usize) -> usize {
+pub fn part_1() -> usize {
+    get_increment_count(&get_input())
+}
+
+pub fn part_2() -> usize {
+    get_increment_window_count(&get_input(), 3)
+}
+
+fn get_increment_window_count(sweeps: &Sweeps, window: usize) -> usize {
     let windows: Vec<usize> =
         sweeps
             .iter()
@@ -17,7 +25,7 @@ pub fn get_increment_window_count(sweeps: &Sweeps, window: usize) -> usize {
     get_increment_count(&windows)
 }
 
-pub fn get_increment_count(sweeps: &Sweeps) -> usize {
+fn get_increment_count(sweeps: &Sweeps) -> usize {
     sweeps
         .iter()
         .skip(1)
@@ -30,7 +38,7 @@ pub fn get_increment_count(sweeps: &Sweeps) -> usize {
         })
 }
 
-pub fn get_input() -> Sweeps {
+fn get_input() -> Sweeps {
     include_str!("input/day-1.txt")
         .lines()
         .map(|line| line.parse::<usize>().unwrap())
@@ -42,11 +50,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn it_maintains_correct_answers() {
-        let input = get_input();
-        let increments = get_increment_count(&input);
-        let window_increments = get_increment_window_count(&input, 3);
-        assert_eq!(1466, increments);
-        assert_eq!(1491, window_increments);
+    fn check() {
+        assert_eq!(1466, part_1());
+        assert_eq!(1491, part_2());
     }
 }

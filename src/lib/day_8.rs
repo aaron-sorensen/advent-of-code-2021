@@ -3,6 +3,14 @@ use std::collections::HashSet;
 type Signal = HashSet<char>;
 type Lookup = [Signal; 10];
 
+pub fn part_1() -> usize {
+    count_unique_digits(&get_input())
+}
+
+pub fn part_2() -> usize {
+    decode_all(&get_input())
+}
+
 // If there is exactly one matching element, remove and return it. Else panic.
 fn remove_only<T, F>(input: &mut Vec<T>, predicate: F) -> T
 where
@@ -53,7 +61,7 @@ fn apply(lookup: &Lookup, output: &[Signal]) -> usize {
     })
 }
 
-pub fn decode_all(input: &Vec<(Vec<String>, Vec<String>)>) -> usize {
+fn decode_all(input: &Vec<(Vec<String>, Vec<String>)>) -> usize {
     input
         .iter()
         .map(|line| {
@@ -72,7 +80,7 @@ pub fn decode_all(input: &Vec<(Vec<String>, Vec<String>)>) -> usize {
         .sum()
 }
 
-pub fn get_input() -> Vec<(Vec<String>, Vec<String>)> {
+fn get_input() -> Vec<(Vec<String>, Vec<String>)> {
     include_str!("input/day-8.txt")
         .lines()
         .fold(Vec::new(), |mut acc, line| {
@@ -84,7 +92,7 @@ pub fn get_input() -> Vec<(Vec<String>, Vec<String>)> {
         })
 }
 
-pub fn count_unique_digits(input: &Vec<(Vec<String>, Vec<String>)>) -> usize {
+fn count_unique_digits(input: &Vec<(Vec<String>, Vec<String>)>) -> usize {
     input.iter().fold(0, |mut acc, line| {
         acc += line
             .1
@@ -99,10 +107,10 @@ pub fn count_unique_digits(input: &Vec<(Vec<String>, Vec<String>)>) -> usize {
 #[cfg(test)]
 mod tests {
     use super::*;
+
     #[test]
-    fn it_maintains_correct_answers() {
-        let input = get_input();
-        assert_eq!(473, count_unique_digits(&input));
-        assert_eq!(1097568, decode_all(&input));
+    fn check() {
+        assert_eq!(473, part_1());
+        assert_eq!(1097568, part_2());
     }
 }

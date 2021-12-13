@@ -1,10 +1,18 @@
+pub fn part_1() -> usize {
+    elevation_count(&generate_map(&get_input(), false), 2)
+}
+
+pub fn part_2() -> usize {
+    elevation_count(&generate_map(&get_input(), true), 2)
+}
+
 #[derive(Debug, Clone)]
-pub struct VentLine {
+struct VentLine {
     pub start: (usize, usize),
     pub end: (usize, usize),
 }
 
-pub fn get_input() -> Vec<VentLine> {
+fn get_input() -> Vec<VentLine> {
     let mut lines: Vec<VentLine> = Vec::new();
 
     for line in include_str!("input/day-5.txt").lines() {
@@ -27,7 +35,7 @@ pub fn get_input() -> Vec<VentLine> {
     lines
 }
 
-pub fn generate_map(lines: &Vec<VentLine>, diagonals: bool) -> Vec<Vec<usize>> {
+fn generate_map(lines: &Vec<VentLine>, diagonals: bool) -> Vec<Vec<usize>> {
     let mut map = Vec::new();
 
     for y in 0..1000 {
@@ -77,7 +85,7 @@ pub fn generate_map(lines: &Vec<VentLine>, diagonals: bool) -> Vec<Vec<usize>> {
     map
 }
 
-pub fn elevation_count(map: &Vec<Vec<usize>>, elevation: usize) -> usize {
+fn elevation_count(map: &Vec<Vec<usize>>, elevation: usize) -> usize {
     let mut result: usize = 0;
     for row in map {
         for item in row {
@@ -94,11 +102,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn it_maintains_correct_answers() {
-        let input = get_input();
-        let map_1 = generate_map(&input, false);
-        let map_2 = generate_map(&input, true);
-        assert_eq!(6283, elevation_count(&map_1, 2));
-        assert_eq!(18864, elevation_count(&map_2, 2));
+    fn check() {
+        assert_eq!(6283, part_1());
+        assert_eq!(18864, part_2());
     }
 }

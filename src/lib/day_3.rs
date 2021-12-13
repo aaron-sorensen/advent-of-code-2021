@@ -1,6 +1,14 @@
 type Input = (Vec<u16>, usize);
 
-pub fn get_input() -> (Vec<u16>, usize) {
+pub fn part_1() -> usize {
+    get_power_consumption(&get_input())
+}
+
+pub fn part_2() -> usize {
+    get_life_support_rating(&get_input())
+}
+
+fn get_input() -> (Vec<u16>, usize) {
     include_str!("input/day-3.txt").lines().enumerate().fold(
         (Vec::new(), 0),
         |mut acc, (_i, line)| {
@@ -11,19 +19,19 @@ pub fn get_input() -> (Vec<u16>, usize) {
     )
 }
 
-pub fn get_power_consumption(input: &Input) -> usize {
+fn get_power_consumption(input: &Input) -> usize {
     let gamma_rate = most_common_bit(&input, 1);
     let epsilon_rate = inverse_bits(&gamma_rate, input.1);
     gamma_rate as usize * epsilon_rate as usize
 }
 
-pub fn get_life_support_rating(input: &Input) -> usize {
+fn get_life_support_rating(input: &Input) -> usize {
     let oxygen_generator_rating = get_oxygen_generator_rating(input);
     let co2_scrubber_rating = get_co2_scrubber_rating(input);
     oxygen_generator_rating as usize * co2_scrubber_rating as usize
 }
 
-pub fn get_co2_scrubber_rating(input: &Input) -> u16 {
+fn get_co2_scrubber_rating(input: &Input) -> u16 {
     let mut exponent = (2 as u16).pow(input.1 as u32 - 1) as u16;
     let mut most_common_bits = most_common_bit(input, 1);
     let mut result = input.0.clone();
@@ -52,7 +60,7 @@ pub fn get_co2_scrubber_rating(input: &Input) -> u16 {
     result[0]
 }
 
-pub fn get_oxygen_generator_rating(input: &Input) -> u16 {
+fn get_oxygen_generator_rating(input: &Input) -> u16 {
     let mut exponent = (2 as u16).pow(input.1 as u32 - 1) as u16;
     let mut most_common_bits = most_common_bit(input, 1);
     let mut result = input.0.clone();
@@ -81,7 +89,7 @@ pub fn get_oxygen_generator_rating(input: &Input) -> u16 {
     result[0]
 }
 
-pub fn most_common_bit(input: &Input, default: u16) -> u16 {
+fn most_common_bit(input: &Input, default: u16) -> u16 {
     let mut vec: Vec<u16> = Vec::new();
     for _i in 0..input.1 {
         vec.push(0);
@@ -111,7 +119,7 @@ pub fn most_common_bit(input: &Input, default: u16) -> u16 {
     })
 }
 
-pub fn inverse_bits(input: &u16, length: usize) -> u16 {
+fn inverse_bits(input: &u16, length: usize) -> u16 {
     let max_exponent = (2 as u16).pow(length as u32 - 1) as u16;
     let mut exponent = 0b1000000000000000;
 
@@ -131,9 +139,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn it_maintains_correct_answers() {
-        let input = get_input();
-        assert_eq!(2954600, get_power_consumption(&input));
-        assert_eq!(1662846, get_life_support_rating(&input));
+    fn check() {
+        assert_eq!(2954600, part_1());
+        assert_eq!(1662846, part_2());
     }
 }

@@ -123,8 +123,9 @@ fn check_point(x: isize, y: isize, grid: &Grid) -> u8 {
 #[cfg(test)]
 mod tests {
     use super::*;
+
     #[test]
-    fn it_maintains_correct_answers() {
+    fn check() {
         assert_eq!(532, part_1());
         assert_eq!(1110780, part_2());
     }
