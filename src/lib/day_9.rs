@@ -120,13 +120,8 @@ fn check_point(x: isize, y: isize, grid: &Grid) -> u8 {
     return grid[y as usize][x as usize];
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn check() {
-        assert_eq!(532, part_1());
-        assert_eq!(1110780, part_2());
-    }
+#[test]
+fn check() {
+    assert_eq!(532, part_1());
+    assert_eq!(1110780, part_2());
 }

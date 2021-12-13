@@ -65,13 +65,8 @@ pub fn get_bearings(directions: &Vec<NavDirection>) -> u32 {
     depth * horizontal
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn check() {
-        assert_eq!(2102357, part_1());
-        assert_eq!(2101031224, part_2());
-    }
+#[test]
+fn check() {
+    assert_eq!(2102357, part_1());
+    assert_eq!(2101031224, part_2());
 }

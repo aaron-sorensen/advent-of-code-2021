@@ -31,13 +31,8 @@ fn calculate_growth(starting_fish: &Vec<u64>, days: usize) -> u64 {
     buckets.iter().sum()
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn check() {
-        assert_eq!(350605, part_1());
-        assert_eq!(1592778185024, part_2());
-    }
+#[test]
+fn check() {
+    assert_eq!(350605, part_1());
+    assert_eq!(1592778185024, part_2());
 }

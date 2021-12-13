@@ -97,13 +97,8 @@ fn elevation_count(map: &Vec<Vec<usize>>, elevation: usize) -> usize {
     result
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn check() {
-        assert_eq!(6283, part_1());
-        assert_eq!(18864, part_2());
-    }
+#[test]
+fn check() {
+    assert_eq!(6283, part_1());
+    assert_eq!(18864, part_2());
 }

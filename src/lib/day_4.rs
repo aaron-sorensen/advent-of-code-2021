@@ -159,13 +159,8 @@ fn find_last_winner(cards: &Vec<BingoCard>, numbers: &Vec<usize>) -> usize {
     0
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn check() {
-        assert_eq!(38594, part_1());
-        assert_eq!(21184, part_2());
-    }
+#[test]
+fn check() {
+    assert_eq!(38594, part_1());
+    assert_eq!(21184, part_2());
 }

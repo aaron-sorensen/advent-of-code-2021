@@ -104,13 +104,8 @@ fn count_unique_digits(input: &Vec<(Vec<String>, Vec<String>)>) -> usize {
     })
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn check() {
-        assert_eq!(473, part_1());
-        assert_eq!(1097568, part_2());
-    }
+#[test]
+fn check() {
+    assert_eq!(473, part_1());
+    assert_eq!(1097568, part_2());
 }

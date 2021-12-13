@@ -134,13 +134,8 @@ fn inverse_bits(input: &u16, length: usize) -> u16 {
     flipped
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn check() {
-        assert_eq!(2954600, part_1());
-        assert_eq!(1662846, part_2());
-    }
+#[test]
+fn check() {
+    assert_eq!(2954600, part_1());
+    assert_eq!(1662846, part_2());
 }

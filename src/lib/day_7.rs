@@ -38,13 +38,8 @@ fn get_position(crab_positions: &Vec<i32>, first_question: bool) -> i32 {
     min_cost
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn check() {
-        assert_eq!(337488, part_1());
-        assert_eq!(89647695, part_2());
-    }
+#[test]
+fn check() {
+    assert_eq!(337488, part_1());
+    assert_eq!(89647695, part_2());
 }

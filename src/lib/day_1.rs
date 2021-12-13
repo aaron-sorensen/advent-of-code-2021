@@ -45,13 +45,8 @@ fn get_input() -> Sweeps {
         .collect()
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn check() {
-        assert_eq!(1466, part_1());
-        assert_eq!(1491, part_2());
-    }
+#[test]
+fn check() {
+    assert_eq!(1466, part_1());
+    assert_eq!(1491, part_2());
 }
