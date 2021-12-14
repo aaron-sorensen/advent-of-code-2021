@@ -3,8 +3,8 @@
  <img src="https://media.giphy.com/media/Rcmyx7NfyNhSM/giphy.gif" width="300px">
 </p>
 <p align="center">
-    <img src="https://img.shields.io/badge/Stars%20⭐-20-yellow">
-    <img src="https://img.shields.io/badge/Days%20Completed-10-green">
+    <img src="https://img.shields.io/badge/Stars%20⭐-22-yellow">
+    <img src="https://img.shields.io/badge/Days%20Completed-11-green">
 </p>
 
 I decided to write everything in Rust this year so as long as that's installed:

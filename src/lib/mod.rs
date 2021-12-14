@@ -1,5 +1,6 @@
 mod day_1;
 mod day_10;
+mod day_11;
 mod day_2;
 mod day_3;
 mod day_4;
@@ -9,7 +10,7 @@ mod day_7;
 mod day_8;
 mod day_9;
 
-static DAYS: [fn(); 10] = [
+static DAYS: [fn(); 11] = [
     || {
         println!("1-1: {}", day_1::part_1());
         println!("1-2: {}", day_1::part_2());
@@ -49,6 +50,10 @@ static DAYS: [fn(); 10] = [
     || {
         println!("10-1: {}", day_10::part_1());
         println!("10-2: {}", day_10::part_2());
+    },
+    || {
+        println!("11-1: {}", day_11::part_1());
+        println!("11-2: {}", day_11::part_2());
     },
 ];
 
